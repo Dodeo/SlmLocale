@@ -168,7 +168,7 @@ class UriPathStrategy extends AbstractStrategy implements ServiceLocatorAwareInt
         if (!$found || ($event->hasSupported() && !in_array($found, $event->getSupported()))) {
             $path = '/' . $locale . $path;
         } else {
-            $path = str_replace($found, $locale, $path);
+            $path = preg_filter('/^\/(.+?)(\/.+)/', '/' . $locale . '$2', $path);
         }
 
         $uri->setPath($path);
