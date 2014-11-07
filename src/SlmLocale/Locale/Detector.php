@@ -140,6 +140,10 @@ class Detector implements EventManagerAwareInterface
             $locale = $this->getDefault();
         }
 
+        //manage all local format from navigator
+        $locale = substr($locale, 0,2);
+
+
         if ($this->hasSupported() && !in_array($locale, $this->getSupported())) {
             $locale = $this->getDefault();
         }
