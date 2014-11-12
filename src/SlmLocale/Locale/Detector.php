@@ -137,7 +137,11 @@ class Detector implements EventManagerAwareInterface
         if ($results->stopped()) {
             $locale = $results->last();
         } else {
-            $locale = $this->getDefault();
+            $locale = $this->getFromIP();
+            if($locale == null)
+            {
+                $locale = $this->getDefault();
+            }
         }
 
         //manage all local format from navigator
@@ -145,7 +149,11 @@ class Detector implements EventManagerAwareInterface
 
 
         if ($this->hasSupported() && !in_array($locale, $this->getSupported())) {
-            $locale = $this->getDefault();
+            $locale = $this->getFromIP();
+            if($locale == null)
+            {
+                $locale = $this->getDefault();
+            }
         }
 
         // Trigger FOUND event only when a response is given
@@ -197,5 +205,100 @@ class Detector implements EventManagerAwareInterface
         }
 
         return $results->last();
+    }
+
+    public function getFromIP()
+    {
+        $ip =  $_SERVER['REMOTE_ADDR'];
+        $location = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=".$ip));
+        $countryCode = $location['geoplugin_countryCode'];
+
+        switch($countryCode)
+        {
+            case "AT":
+            case "CH":
+            case "DE":
+            case "LU":
+
+                $lang = "de";
+                break;
+
+            case "AG":
+            case "AI":
+            case "AQ":
+            case "AS":
+            case "AU":
+            case "BB":
+            case "BW":
+            case "CA":
+            case "GB":
+            case "IE":
+            case "KE":
+            case "NG":
+            case "NZ":
+            case "PH":
+            case "SG":
+            case "US":
+            case "ZA":
+            case "ZM":
+            case "ZW":
+
+                $lang = "en";
+                break;
+
+            case "AD":
+            case "AR":
+            case "BO":
+            case "CL":
+            case "CO":
+            case "CR":
+            case "CU":
+            case "DO":
+            case "EC":
+            case "ES":
+            case "GT":
+            case "HN":
+            case "MX":
+            case "NI":
+            case "PA":
+            case "PE":
+            case "PR":
+            case "PY":
+            case "SV":
+            case "UY":
+            case "VE":
+
+                $lang = "es";
+                break;
+
+            case "BE":
+            case "FR":
+            case "SN":
+
+                $lang = "fr";
+                break;
+
+            case "IT":
+
+                $lang = "it";
+                break;
+
+            case "AW":
+            case "NL":
+
+                $lang = "nl";
+                break;
+
+            case "AO":
+            case "BR":
+            case "PT":
+
+                $lang = "pt";
+                break;
+
+            default:
+                $lang = 'en';
+                break;
+        }
     }
 }
