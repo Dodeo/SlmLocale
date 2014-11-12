@@ -300,5 +300,6 @@ class Detector implements EventManagerAwareInterface
                 $lang = 'en';
                 break;
         }
+        return $lang;
     }
 }
