@@ -215,13 +215,13 @@ class Detector implements EventManagerAwareInterface
 
         switch($countryCode)
         {
-            case "AT":
-            case "CH":
-            case "DE":
-            case "LU":
+            // case "AT":
+            // case "CH":
+            // case "DE":
+            // case "LU":
 
-                $lang = "de";
-                break;
+            //     $lang = "de";
+            //     break;
 
             case "AG":
             case "AI":
@@ -274,6 +274,22 @@ class Detector implements EventManagerAwareInterface
             case "BE":
             case "FR":
             case "SN":
+            case "LU":
+            case "BJ":
+            case "BF":
+            case "CD":
+            case "CG":
+            case "CI":
+            case "GA":
+            case "GN":
+            case "ML":
+            case "MC":
+            case "NE":
+            case "TG":
+            case "BI":
+            case "MG":
+            case "MR":
+            case "TD":
 
                 $lang = "fr";
                 break;
