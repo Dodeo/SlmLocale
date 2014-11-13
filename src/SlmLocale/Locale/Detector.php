@@ -210,8 +210,7 @@ class Detector implements EventManagerAwareInterface
     public function getFromIP()
     {
         $ip =  $_SERVER['REMOTE_ADDR'];
-        $location = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=".$ip));
-        $countryCode = $location['geoplugin_countryCode'];
+        $countryCode = file_get_contents("http://api.hostip.info/country.php?ip=".$ip);
 
         switch($countryCode)
         {
