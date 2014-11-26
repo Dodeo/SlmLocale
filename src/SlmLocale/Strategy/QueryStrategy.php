@@ -88,6 +88,32 @@ class QueryStrategy extends AbstractStrategy
             return;
         }
 
+         $homepage = $_SERVER['REQUEST_URI'];
+        if($homepage == '/fr/')
+        {
+            return 'fr';
+        }
+        if($homepage == '/en/')
+        {
+            return 'en';
+        }
+        if($homepage == '/es/')
+        {
+            return 'es';
+        }
+        if($homepage == '/it/')
+        {
+            return 'it';
+        }
+        if($homepage == '/nl/')
+        {
+            return 'nl';
+        }
+        if($homepage == '/pt/')
+        {
+            return 'pt';
+        }
+        
         $locale = $request->getQuery($this->getQueryKey());
         if ($locale === null) {
             return;
