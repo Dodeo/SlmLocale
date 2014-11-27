@@ -89,35 +89,34 @@ class QueryStrategy extends AbstractStrategy
         }
 
         $homepage = $_SERVER['REQUEST_URI'];
-        
-        if(strstr($homepage,'/fr/'))
-        {
-            return 'fr';
-        }
-        if(strstr($homepage,'/en/'))
-        {
-            return 'en';
-        }
-        if(strstr($homepage, '/es/'))
-        {
-            return 'es';
-        }
-        if(strstr($homepage, '/it/'))
-        {
-            return 'it';
-        }
-        if(strstr($homepage, '/nl/'))
-        {
-            return 'nl';
-        }
-        if(strstr($homepage, '/pt/'))
-        {
-            return 'pt';
-        }
+    
         
         $locale = $request->getQuery($this->getQueryKey());
         if ($locale === null) {
-            return;
+            if(strstr($homepage,'/fr/'))
+            {
+                return 'fr';
+            }
+            if(strstr($homepage,'/en/'))
+            {
+                return 'en';
+            }
+            if(strstr($homepage, '/es/'))
+            {
+                return 'es';
+            }
+            if(strstr($homepage, '/it/'))
+            {
+                return 'it';
+            }
+            if(strstr($homepage, '/nl/'))
+            {
+                return 'nl';
+            }
+            if(strstr($homepage, '/pt/'))
+            {
+                return 'pt';
+            }
         }
 
         if (!in_array($locale, $event->getSupported())) {
