@@ -88,28 +88,29 @@ class QueryStrategy extends AbstractStrategy
             return;
         }
 
-         $homepage = $_SERVER['REQUEST_URI'];
-        if($homepage == '/fr/')
+        $homepage = $_SERVER['REQUEST_URI'];
+        
+        if(strstr($homepage,'/fr/'))
         {
             return 'fr';
         }
-        if($homepage == '/en/')
+        if(strstr($homepage,'/en/'))
         {
             return 'en';
         }
-        if($homepage == '/es/')
+        if(strstr($homepage, '/es/'))
         {
             return 'es';
         }
-        if($homepage == '/it/')
+        if(strstr($homepage, '/it/'))
         {
             return 'it';
         }
-        if($homepage == '/nl/')
+        if(strstr($homepage, '/nl/'))
         {
             return 'nl';
         }
-        if($homepage == '/pt/')
+        if(strstr($homepage, '/pt/'))
         {
             return 'pt';
         }
