@@ -49,7 +49,7 @@ use Zend\Mvc\Router\Http\TreeRouteStack;
 
 class UriPathStrategy extends AbstractStrategy implements ServiceLocatorAwareInterface
 {
-    const REDIRECT_STATUS_CODE = 301;
+    const REDIRECT_STATUS_CODE = 302;
 
     protected $redirect_when_found = true;
     protected $aliases;

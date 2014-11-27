@@ -45,7 +45,7 @@ use SlmLocale\LocaleEvent;
 class HostStrategy extends AbstractStrategy
 {
     const LOCALE_KEY           = ':locale';
-    const REDIRECT_STATUS_CODE = 301;
+    const REDIRECT_STATUS_CODE = 302;
 
     protected $domain;
     protected $aliases;
