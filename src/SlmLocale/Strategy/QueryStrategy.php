@@ -117,6 +117,7 @@ class QueryStrategy extends AbstractStrategy
             {
                 return 'pt';
             }
+            return;
         }
 
         if (!in_array($locale, $event->getSupported())) {
